@@ -6116,3 +6116,400 @@ msgstr "Problema ao converter este número: %1$s"
 #, c-format
 msgid "setting result to %1$u"
 msgstr "establecendo o resultado a %1$u"
+
+#: src/Feature.cc:28
+msgid "Enable <code>roof</code>"
+msgstr "Activa <code>roof</code>"
+
+#: src/Feature.cc:30
+msgid "Enable DBus input drivers (requires restart)"
+msgstr "Activa os controladores de entrada DBus (require reiniciar)"
+
+#: src/Feature.cc:31
+msgid "Enable lazy unions."
+msgstr "Activa as unións preguiceiras (lazy unions)."
+
+#: src/Feature.cc:33
+msgid "Enable indexing in vertex object renderers"
+msgstr "Activa a indexación nos renderizadores de obxectos de vértices"
+
+#: src/Feature.cc:35
+msgid "Enable import function returning data instead of geometry."
+msgstr "Activa a función import que devolve datos en vez de xeometría."
+
+#: src/Feature.cc:37
+msgid "Enable object function to allow user creation of objects."
+msgstr "Activa a función object para permitir que o usuario cree obxectos."
+
+#: src/Feature.cc:40
+msgid ""
+"Attempt to produce predictible, diffable outputs (e.g. sorting the STL, or "
+"remeshing in a determined order)"
+msgstr ""
+"Tenta producir saídas predicibles e comparables (p. ex. ordenando o STL ou "
+"remallando nunha orde determinada)"
+
+#: src/Feature.cc:43
+msgid ""
+"Enable vector swizzling (e.g. <code>vec4.zyx</code> to reverse a 3D vector)."
+msgstr ""
+"Activa o swizzling de vectores (p. ex. <code>vec4.zyx</code> para inverter "
+"un vector 3D)."
+
+#: src/Feature.cc:46
+msgid ""
+"Specify the maximum error in $fe and shapes will be segmented appropriately."
+msgstr ""
+"Especifica o erro máximo en $fe e as formas segmentaranse adecuadamente."
+
+#: src/Feature.cc:48
+msgid ""
+"Enable AI features (Note: AI integration is under development and does not "
+"connect to external APIs yet)."
+msgstr ""
+"Activa as funcionalidades de IA (Nota: a integración con IA está en "
+"desenvolvemento e aínda non se conecta a API externas)."
+
+#: src/Feature.cc:52
+msgid ""
+"Allow non-ASCII characters in identifiers, following Unicode Standard Annex "
+"#31."
+msgstr ""
+"Permite caracteres non ASCII nos identificadores, segundo o anexo 31 do "
+"estándar Unicode."
+
+#: src/Feature.cc:56
+msgid ""
+"Enable experimental Python Engine (implies risk of malicious scripts "
+"downloaded)."
+msgstr ""
+"Activa o motor experimental de Python (implica o risco de descargar scripts "
+"maliciosos)."
+
+#: src/core/Settings.cc:65
+msgid "<full path to the output file>"
+msgstr "<ruta completa ao ficheiro de saída>"
+
+#: src/core/Settings.cc:66
+msgid "<directory of the output file>"
+msgstr "<directorio do ficheiro de saída>"
+
+#: src/core/Settings.cc:67
+msgid "<extension of the output file without leading dot>"
+msgstr "<extensión do ficheiro de saída sen o punto inicial>"
+
+#: src/core/Settings.cc:68
+msgid "<full path to the main source file>"
+msgstr "<ruta completa ao ficheiro fonte principal>"
+
+#: src/core/Settings.cc:69
+msgid "<directory of the main source file>"
+msgstr "<directorio do ficheiro fonte principal>"
+
+#: src/core/Settings.cc:256
+msgid "CGAL (old/slow)"
+msgstr "CGAL (antigo/lento)"
+
+#: src/core/Settings.cc:256
+msgid "Manifold (new/fast)"
+msgstr "Manifold (novo/rápido)"
+
+#: src/gui/AutoUpdater.cc:16
+msgid "Check for Update..."
+msgstr "Buscar actualizacións..."
+
+#: src/gui/ExportSvgDialog.cc:64
+msgid "Select Fill Color"
+msgstr "Seleccionar a cor de recheo"
+
+#: src/gui/ExportSvgDialog.cc:82
+msgid "Select Stroke Color"
+msgstr "Seleccionar a cor do trazo"
+
+#: src/gui/FontList.cc:170 src/gui/FontList.cc:200 src/gui/FontList.cc:448
+msgid "Filter (%1 fonts found)"
+msgstr "Filtro (%1 tipos de letra atopados)"
+
+#: src/gui/MainWindow.cc:1348
+msgid "All trusted python files revoked"
+msgstr "Revogáronse todos os ficheiros Python de confianza"
+
+#: src/gui/MainWindow.cc:1364
+msgid "Directory does not exist. Can't create virtual environment."
+msgstr "O directorio non existe. Non se pode crear o contorno virtual."
+
+#: src/gui/MainWindow.cc:1371
+msgid "Directory is not empty. Can't create virtual environment."
+msgstr "O directorio non está baleiro. Non se pode crear o contorno virtual."
+
+#: src/gui/MainWindow.cc:1384
+msgid "Virtual environment created, please restart OpenSCAD to activate."
+msgstr "Creouse o contorno virtual; reinicie OpenSCAD para activalo."
+
+#: src/gui/MainWindow.cc:1388
+msgid "Virtual environment creation failed."
+msgstr "Fallou a creación do contorno virtual."
+
+#: src/gui/MainWindow.cc:1406
+msgid "Virtual environment selected, please restart OpenSCAD to activate."
+msgstr "Seleccionouse o contorno virtual; reinicie OpenSCAD para activalo."
+
+#: src/gui/MainWindow.cc:1902 src/gui/MainWindow.cc:3763
+msgid "Render (not preview) to enable measurements"
+msgstr "Renderice (non previsualice) para activar as medicións"
+
+#: src/gui/MainWindow.cc:2069 src/gui/MainWindow.cc:2094
+#: src/gui/MainWindow.cc:2098 src/gui/MainWindow.cc:2137
+#: src/gui/MainWindow.cc:2250
+msgid "Click to start measuring"
+msgstr "Prema para comezar a medir"
+
+#: src/gui/MainWindow.cc:2071
+msgid "No top level geometry; render something to enable measurements"
+msgstr ""
+"Non hai xeometría de nivel superior; renderice algo para activar as "
+"medicións"
+
+#: src/gui/MainWindow.cc:2099
+msgid "Click to cancel measurement"
+msgstr "Prema para cancelar a medición"
+
+#: src/gui/MainWindow.cc:2135
+msgid "Click any above to copy its data to the clipboard"
+msgstr ""
+"Prema calquera das anteriores para copiar os seus datos ao portapapeis"
+
+#: src/gui/MainWindow.cc:2185
+msgid "(no source reference)"
+msgstr "(sen referencia ao código fonte)"
+
+#: src/gui/MainWindow.cc:2434
+msgid "%1 Dump"
+msgstr "Volcado de %1"
+
+#: src/gui/MainWindow.cc:2436
+msgid "No %1 to dump. Please try compiling first..."
+msgstr "Non hai %1 que volcar. Probe a compilar primeiro..."
+
+#: src/gui/MainWindow.cc:2515
+msgid ""
+"The current tab has been modified since its last render (F6).\n"
+"Do you really want to export the previous content?"
+msgstr ""
+"A lapela actual modificouse desde a última renderización (F6).\n"
+"Realmente quere exportar o contido anterior?"
+
+#: src/gui/MainWindow.cc:2526
+msgid ""
+"The rendered data is of different tab.\n"
+"Do you really want to export the another tab's content?"
+msgstr ""
+"Os datos renderizados son doutra lapela.\n"
+"Realmente quere exportar o contido da outra lapela?"
+
+#: src/gui/MainWindow.cc:3485
+msgid ""
+"Measurements only work with Manifold backend; Preferences->Advanced->3D "
+"Rendering->Backend"
+msgstr ""
+"As medicións só funcionan co motor Manifold; "
+"Preferencias->Avanzado->Renderización 3D->Motor"
+
+#: src/gui/Measurement.cc:150
+msgid "Got Not-a-Number when calculating distance; sorry"
+msgstr "Obtívose Not-a-Number ao calcular a distancia; sentímolo"
+
+#: src/gui/Measurement.cc:214
+msgid "If selecting three things, they must all be points"
+msgstr "Se se seleccionan tres elementos, deben ser todos puntos"
+
+#: src/gui/Measurement.cc:220
+msgid "Got Not-a-Number when calculating angle; sorry"
+msgstr "Obtívose Not-a-Number ao calcular o ángulo; sentímolo"
+
+#: src/gui/Preferences.cc:667
+msgid "Sorry, this feature is not implemented on your Operating System"
+msgstr ""
+"Sentímolo, esta funcionalidade non está implementada no seu sistema "
+"operativo"
+
+#: src/gui/Preferences.cc:1201
+msgid "Select application"
+msgstr "Seleccionar a aplicación"
+
+#: src/gui/Preferences.cc:1218
+msgid "Select temporary directory"
+msgstr "Seleccionar o directorio temporal"
+
+#: src/gui/ScintillaEditor.cc:1511
+msgid "Use <b>Cmd + Click</b> to open the file"
+msgstr "Use <b>Cmd + clic</b> para abrir o ficheiro"
+
+#: src/gui/ScintillaEditor.cc:1514
+msgid "Use <b>CTRL + Click</b> to open the file"
+msgstr "Use <b>Ctrl + clic</b> para abrir o ficheiro"
+
+#: src/gui/TabManager.cc:796
+msgid "Save A Copy"
+msgstr "Gardar unha copia"
+
+#: src/gui/UIUtils.cc:150 src/gui/UIUtils.cc:166
+msgid "OpenSCAD Designs (%1)"
+msgstr "Deseños de OpenSCAD (%1)"
+
+#: src/gui/UIUtils.cc:151 src/gui/UIUtils.cc:167
+msgid "Open File"
+msgstr "Abrir ficheiro"
+
+#: src/gui/ai/ChatInputEdit.cc:8
+msgid "Ask AI..."
+msgstr "Pregunte á IA..."
+
+#: src/gui/ai/ChatWidget.cc:299
+msgid ""
+"\n"
+"\n"
+"*[Request Stopped by User]*"
+msgstr ""
+"\n"
+"\n"
+"*[Solicitude detida polo usuario]*"
+
+#: src/gui/ai/ChatWidget.cc:321
+msgid ""
+"Error: Prompt size exceeds the limit of 100,000 characters. Please shorten "
+"your prompt."
+msgstr ""
+"Erro: o tamaño da indicación supera o límite de 100.000 caracteres. Acúrtea."
+
+#: src/gui/ai/ChatWidget.cc:374
+msgid "Error: "
+msgstr "Erro: "
+
+#: src/gui/ai/ChatWidget.cc:377
+msgid ""
+"\n"
+"\n"
+"*Troubleshooting Tip: Connection refused. Please check if your local model server (such as Ollama or LM Studio) is running and listening on the configured port.*"
+msgstr ""
+"\n"
+"\n"
+"*Consello: conexión rexeitada. Comprobe se o seu servidor de modelos local (como Ollama ou LM Studio) está en execución e escoitando no porto configurado.*"
+
+#: src/gui/ai/ChatWidget.cc:382
+msgid ""
+"\n"
+"\n"
+"*Troubleshooting Tip: Host unreachable. Please check your internet connection and verify that the API endpoint URL in Preferences is correct.*"
+msgstr ""
+"\n"
+"\n"
+"*Consello: non se pode acceder ao servidor. Comprobe a súa conexión a Internet e que o URL do punto de acceso da API nas Preferencias sexa correcto.*"
+
+#: src/gui/ai/ChatWidget.cc:387
+msgid ""
+"\n"
+"\n"
+"*Troubleshooting Tip: The request timed out. The server might be busy or offline. Please try again.*"
+msgstr ""
+"\n"
+"\n"
+"*Consello: esgotouse o tempo de espera da solicitude. O servidor pode estar ocupado ou desconectado. Ténteo de novo.*"
+
+#: src/gui/ai/ChatWidget.cc:391
+msgid ""
+"\n"
+"\n"
+"*Troubleshooting Tip: Unauthorized. Please check if your API Key is entered correctly in Preferences -> AI tab.*"
+msgstr ""
+"\n"
+"\n"
+"*Consello: non autorizado. Comprobe se a chave API está ben introducida en Preferencias -> lapela IA.*"
+
+#: src/gui/ai/ChatWidget.cc:395
+msgid ""
+"\n"
+"\n"
+"*Troubleshooting Tip: Not Found. Please check if the endpoint URL and model name are configured correctly in Preferences.*"
+msgstr ""
+"\n"
+"\n"
+"*Consello: non atopado. Comprobe se o URL do punto de acceso e o nome do modelo están ben configurados nas Preferencias.*"
+
+#: src/gui/ai/ChatWidget.cc:673 src/gui/ai/ChatWidget.cc:1104
+msgid "Inspected current code"
+msgstr "Inspeccionou o código actual"
+
+#: src/gui/ai/ChatWidget.cc:674 src/gui/ai/ChatWidget.cc:1105
+msgid ""
+"Tool: get_editor_code\n"
+"Result: Read %1 lines."
+msgstr ""
+"Ferramenta: get_editor_code\n"
+"Resultado: leu %1 liñas."
+
+#: src/gui/ai/ChatWidget.cc:677 src/gui/ai/ChatWidget.cc:1108
+msgid "Applied code changes"
+msgstr "Aplicou cambios no código"
+
+#: src/gui/ai/ChatWidget.cc:678 src/gui/ai/ChatWidget.cc:1109
+msgid ""
+"Tool: set_editor_code\n"
+"Result: Applied code changes to the active editor."
+msgstr ""
+"Ferramenta: set_editor_code\n"
+"Resultado: aplicou os cambios de código no editor activo."
+
+#: src/gui/ai/ChatWidget.cc:680 src/gui/ai/ChatWidget.cc:1111
+msgid "Triggered render preview"
+msgstr "Lanzou a previsualización"
+
+#: src/gui/ai/ChatWidget.cc:683 src/gui/ai/ChatWidget.cc:1114
+msgid "Inspected 3D Viewport"
+msgstr "Inspeccionou a vista 3D"
+
+#: src/gui/ai/ChatWidget.cc:686 src/gui/ai/ChatWidget.cc:1117
+msgid "Adjusted Camera View"
+msgstr "Axustou a vista da cámara"
+
+#: src/gui/ai/ChatWidget.cc:689 src/gui/ai/ChatWidget.cc:1120
+msgid "Executed tool: %1"
+msgstr "Executou a ferramenta: %1"
+
+#: src/gui/ai/ChatWidget.cc:965
+msgid "Failed to parse JSON file: %1"
+msgstr "Non foi posible analizar o ficheiro JSON: %1"
+
+#: src/gui/ai/ChatWidget.cc:1014
+msgid "Imported chat history with warnings: %1 invalid entries were skipped."
+msgstr ""
+"Importouse o historial do chat con avisos: omitíronse %1 entradas non "
+"válidas."
+
+#: src/gui/ai/CollapsibleBubble.h:96
+msgid "%1 AI used %2 tool(s)"
+msgstr "%1 A IA usou %2 ferramenta(s)"
+
+#: src/gui/ai/DiffDialog.h:25
+msgid "Review Code Changes"
+msgstr "Revisar os cambios de código"
+
+#: src/gui/ai/DiffDialog.h:33
+msgid ""
+"The AI assistant has proposed the following changes. Deletions are shown on "
+"the left (red), and additions on the right (green)."
+msgstr ""
+"O asistente de IA propuxo os seguintes cambios. As eliminacións amósanse á "
+"esquerda (vermello) e as engadiduras á dereita (verde)."
+
+#: src/gui/ai/DiffDialog.h:50
+msgid "Trigger preview after applying"
+msgstr "Previsualizar despois de aplicar"
+
+#: src/gui/ai/DiffDialog.h:56
+msgid "Apply Changes"
+msgstr "Aplicar os cambios"
+
+#: src/gui/ai/DiffDialog.h:62
+msgid "Discard Changes"
+msgstr "Descartar os cambios"
