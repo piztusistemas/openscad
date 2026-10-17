@@ -58,6 +58,19 @@ std::vector<SettingsEntryEnum<std::string>::Item> axisValues()
 
 }  // namespace
 
+std::string LocalAppParameterType::description() const
+{
+  switch (value) {
+  case string:    return "";
+  case file:      return _("<full path to the output file>");
+  case dir:       return _("<directory of the output file>");
+  case extension: return _("<extension of the output file without leading dot>");
+  case source:    return _("<full path to the main source file>");
+  case sourcedir: return _("<directory of the main source file>");
+  default:        return "*invalid*";
+  }
+}
+
 void Settings::visit(const SettingsVisitor& visitor)
 {
   for (SettingsEntryBase *entry : entries) {
@@ -240,7 +253,8 @@ SettingsEntryBool Settings::tlsSkipVerify("network", "tlsSkipVerify", false);
 
 SettingsEntryEnum<std::string> Settings::renderBackend3D(
   "advanced", "renderBackend3D",
-  {{"CGAL", "cgal", "CGAL (old/slow)"}, {"Manifold", "manifold", "Manifold (new/fast)"}}, "Manifold");
+  {{"CGAL", "cgal", _("CGAL (old/slow)")}, {"Manifold", "manifold", _("Manifold (new/fast)")}},
+  "Manifold");
 SettingsEntryEnum<std::string> Settings::toolbarExport3D(
   "advanced", "toolbarExport3D", createFileFormatItems(fileformat::all3D()),
   fileformat::info(FileFormat::ASCII_STL).description);

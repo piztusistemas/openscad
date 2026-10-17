@@ -147,8 +147,8 @@ QFileInfo UIUtils::openFile(QWidget *parent, QStringList extensions)
 {
   QSettingsCached settings;
   const auto last_dirname = settings.value("lastOpenDirName").toString();
-  const auto filter = fileOpenFilter("OpenSCAD Designs (%1)", std::move(extensions));
-  const auto filename = QFileDialog::getOpenFileName(parent, "Open File", last_dirname, filter);
+  const auto filter = fileOpenFilter(_("OpenSCAD Designs (%1)"), std::move(extensions));
+  const auto filename = QFileDialog::getOpenFileName(parent, _("Open File"), last_dirname, filter);
 
   if (filename.isEmpty()) {
     return {};
@@ -163,8 +163,8 @@ QFileInfoList UIUtils::openFiles(QWidget *parent, QStringList extensions)
 {
   QSettingsCached settings;
   const auto last_dirname = settings.value("lastOpenDirName").toString();
-  const auto filter = fileOpenFilter("OpenSCAD Designs (%1)", std::move(extensions));
-  const auto filenames = QFileDialog::getOpenFileNames(parent, "Open File", last_dirname, filter);
+  const auto filter = fileOpenFilter(_("OpenSCAD Designs (%1)"), std::move(extensions));
+  const auto filenames = QFileDialog::getOpenFileNames(parent, _("Open File"), last_dirname, filter);
 
   QFileInfoList fileInfoList;
   for (const QString& filename : filenames) {

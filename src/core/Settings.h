@@ -311,18 +311,7 @@ public:
     }
   }
 
-  std::string description() const
-  {
-    switch (value) {
-    case string:    return "";
-    case file:      return "<full path to the output file>";
-    case dir:       return "<directory of the output file>";
-    case extension: return "<extension of the output file without leading dot>";
-    case source:    return "<full path to the main source file>";
-    case sourcedir: return "<directory of the main source file>";
-    default:        return "*invalid*";
-    }
-  }
+  std::string description() const;
 
 private:
   Value value;

@@ -581,7 +581,9 @@ void Preferences::setupFeaturesPage()
     gridLayoutExperimentalFeatures->addWidget(cb, row, 0, 1, 2, Qt::AlignLeading);
     row++;
 
-    auto *l = new QLabel(QString::fromStdString(feature->get_description()), pageFeatures);
+    // Descriptions are marked with _() in static initializers, before gettext is set up,
+    // so they need to be translated here.
+    auto *l = new QLabel(QString::fromUtf8(_(feature->get_description().c_str())), pageFeatures);
     l->setTextFormat(Qt::RichText);
     gridLayoutExperimentalFeatures->addWidget(l, row, 1, 1, 1, Qt::AlignLeading);
     row++;
@@ -662,7 +664,7 @@ void Preferences::on_syntaxHighlight_currentTextChanged(const QString& s)
 void unimplemented_msg()
 {
   QMessageBox mbox;
-  mbox.setText("Sorry, this feature is not implemented on your Operating System");
+  mbox.setText(_("Sorry, this feature is not implemented on your Operating System"));
   mbox.exec();
 }
 
@@ -1196,7 +1198,7 @@ void Preferences::on_lineEditLocalAppExecutable_editingFinished()
 
 void Preferences::on_toolButtonLocalAppSelectExecutable_clicked()
 {
-  const QString fileName = QFileDialog::getOpenFileName(this, "Select application");
+  const QString fileName = QFileDialog::getOpenFileName(this, _("Select application"));
   if (fileName.isEmpty()) {
     return;
   }
@@ -1213,7 +1215,7 @@ void Preferences::on_lineEditLocalAppTempDir_editingFinished()
 
 void Preferences::on_toolButtonLocalAppSelectTempDir_clicked()
 {
-  const QString tempDir = QFileDialog::getExistingDirectory(this, "Select temporary directory");
+  const QString tempDir = QFileDialog::getExistingDirectory(this, _("Select temporary directory"));
   if (tempDir.isEmpty()) {
     return;
   }

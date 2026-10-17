@@ -25,35 +25,36 @@ Feature::list_t Feature::feature_list;  // Double-listed values. --^
  * (well-defined) order of object construction, matching the order of the
  * const Features listed below.
  */
-const Feature Feature::ExperimentalRoof("roof", "Enable <code>roof</code>");
+const Feature Feature::ExperimentalRoof("roof", _("Enable <code>roof</code>"));
 const Feature Feature::ExperimentalInputDriverDBus("input-driver-dbus",
-                                                   "Enable DBus input drivers (requires restart)");
-const Feature Feature::ExperimentalLazyUnion("lazy-union", "Enable lazy unions.");
+                                                   _("Enable DBus input drivers (requires restart)"));
+const Feature Feature::ExperimentalLazyUnion("lazy-union", _("Enable lazy unions."));
 const Feature Feature::ExperimentalVxORenderersIndexing("vertex-object-renderers-indexing",
-                                                        "Enable indexing in vertex object renderers");
+                                                        _("Enable indexing in vertex object renderers"));
 const Feature Feature::ExperimentalImportFunction(
-  "import-function", "Enable import function returning data instead of geometry.");
+  "import-function", _("Enable import function returning data instead of geometry."));
 const Feature Feature::ExperimentalObjectFunction(
-  "object-function", "Enable object function to allow user creation of objects.");
+  "object-function", _("Enable object function to allow user creation of objects."));
 const Feature Feature::ExperimentalPredictibleOutput(
-  "predictible-output",
-  "Attempt to produce predictible, diffable outputs (e.g. sorting the STL, or remeshing in a determined "
-  "order)");
+  "predictible-output", _("Attempt to produce predictible, diffable outputs (e.g. sorting the STL, or "
+                          "remeshing in a determined "
+                          "order)"));
 const Feature Feature::ExperimentalVectorSwizzle(
-  "vector-swizzle", "Enable vector swizzling (e.g. <code>vec4.zyx</code> to reverse a 3D vector).");
+  "vector-swizzle", _("Enable vector swizzling (e.g. <code>vec4.zyx</code> to reverse a 3D vector)."));
 const Feature Feature::ExperimentalDiscretizationByError(
   "discretization-by-error",
-  "Specify the maximum error in $fe and shapes will be segmented appropriately.");
-const Feature Feature::ExperimentalAiFeatures("ai-features",
-                                              "Enable AI features (Note: AI integration is under "
-                                              "development and does not connect to external APIs yet).");
+  _("Specify the maximum error in $fe and shapes will be segmented appropriately."));
+const Feature Feature::ExperimentalAiFeatures(
+  "ai-features", _("Enable AI features (Note: AI integration is under "
+                   "development and does not connect to external APIs yet)."));
 const Feature Feature::ExperimentalUnicodeIdentifiers(
   "unicode-identifiers",
-  "Allow non-ASCII characters in identifiers, following Unicode Standard Annex #31.");
+  _("Allow non-ASCII characters in identifiers, following Unicode Standard Annex #31."));
 
 #ifdef ENABLE_PYTHON
 const Feature Feature::ExperimentalPythonEngine(
-  "python-engine", "Enable experimental Python Engine (implies risk of malicious scripts downloaded).");
+  "python-engine",
+  _("Enable experimental Python Engine (implies risk of malicious scripts downloaded)."));
 #endif
 
 Feature::Feature(const std::string& name, std::string description, bool hidden)

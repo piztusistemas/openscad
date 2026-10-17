@@ -10,6 +10,8 @@
 #include <vector>
 #include <QString>
 
+#include "gui/qtgettext.h"
+
 class CollapsibleBubble : public QWidget
 {
   Q_OBJECT
@@ -91,7 +93,7 @@ private:
   {
     bool expanded = toggleButton->isChecked();
     QString arrow = expanded ? "▼" : "▶";
-    QString text = QString("%1 AI used %2 tool(s)").arg(arrow).arg(toolCalls.size());
+    QString text = q_("%1 AI used %2 tool(s)").arg(arrow).arg(toolCalls.size());
     toggleButton->setText(text);
   }
 

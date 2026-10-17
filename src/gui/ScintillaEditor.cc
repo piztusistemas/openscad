@@ -1508,10 +1508,10 @@ void ScintillaEditor::onIndicatorReleased(int line, int col, Qt::KeyboardModifie
     if (!indicatorsActive) {
       QTimer::singleShot(0, this, [this] {
 #ifdef Q_OS_MACOS
-        QToolTip::showText(QCursor::pos(), "Use <b>Cmd + Click</b> to open the file", this, rect(),
+        QToolTip::showText(QCursor::pos(), _("Use <b>Cmd + Click</b> to open the file"), this, rect(),
                            toolTipDuration());
 #else
-        QToolTip::showText(QCursor::pos(), "Use <b>CTRL + Click</b> to open the file", this, rect(),
+        QToolTip::showText(QCursor::pos(), _("Use <b>CTRL + Click</b> to open the file"), this, rect(),
                            toolTipDuration());
 #endif
       });

@@ -31,6 +31,9 @@ class InitConfigurator
 {
 protected:
   void writeSettings();
+  /** Translate the description of a settings enum item. The items are created in static
+   * initializers, before gettext is set up, so they hold the untranslated text. */
+  static QString translatedDescription(const std::string& description);
   /** Set checkbox status from the settings value */
   void initUpdateCheckBox(const BlockSignals<QCheckBox *>& checkBox,
                           const Settings::SettingsEntryBool& entry);
@@ -104,7 +107,7 @@ void InitConfigurator::initComboBox(QComboBox *comboBox,
 {
   comboBox->clear();
   for (const auto& item : entry.items()) {
-    comboBox->addItem(QString::fromStdString(item.description), QString::fromStdString(item.name));
+    comboBox->addItem(translatedDescription(item.description), QString::fromStdString(item.name));
   }
   updateComboBox(comboBox, entry);
 }

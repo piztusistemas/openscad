@@ -296,7 +296,7 @@ void ChatWidget::onSendPressed()
         scrollLayout->removeWidget(activeAIBubble);
         delete activeAIBubble;
       } else {
-        stop_msg += "\n\n*[Request Stopped by User]*";
+        stop_msg += _("\n\n*[Request Stopped by User]*");
         activeAIBubble->updateText(QString::fromStdString(stop_msg));
         if (activeResponseText && !activeResponseText->empty()) {
           this->history.push_back({"assistant", *activeResponseText});
@@ -318,7 +318,7 @@ void ChatWidget::onSendPressed()
   if (prompt.length() > 100000) {
     addMessage(prompt, true);
     addMessage(
-      tr("Error: Prompt size exceeds the limit of 100,000 characters. Please shorten your prompt."),
+      q_("Error: Prompt size exceeds the limit of 100,000 characters. Please shorten your prompt."),
       false);
     return;
   }
@@ -371,29 +371,29 @@ void ChatWidget::onSendPressed()
     [this, alive](const std::string& error_msg) {
       QMetaObject::invokeMethod(qApp, [this, alive, error_msg]() {
         if (!*alive || !isRequestRunning) return;
-        std::string display_err = "Error: " + error_msg;
+        std::string display_err = _("Error: ") + error_msg;
         if (error_msg.find("Connection refused") != std::string::npos) {
           display_err +=
-            "\n\n*Troubleshooting Tip: Connection refused. Please check if your local model server "
-            "(such as Ollama or LM Studio) is running and listening on the configured port.*";
+            _("\n\n*Troubleshooting Tip: Connection refused. Please check if your local model server "
+              "(such as Ollama or LM Studio) is running and listening on the configured port.*");
         } else if (error_msg.find("Host not found") != std::string::npos ||
                    error_msg.find("unreachable") != std::string::npos) {
           display_err +=
-            "\n\n*Troubleshooting Tip: Host unreachable. Please check your internet connection and "
-            "verify that the API endpoint URL in Preferences is correct.*";
+            _("\n\n*Troubleshooting Tip: Host unreachable. Please check your internet connection and "
+              "verify that the API endpoint URL in Preferences is correct.*");
         } else if (error_msg.find("timed out") != std::string::npos ||
                    error_msg.find("Timeout") != std::string::npos) {
           display_err +=
-            "\n\n*Troubleshooting Tip: The request timed out. The server might be busy or offline. "
-            "Please try again.*";
+            _("\n\n*Troubleshooting Tip: The request timed out. The server might be busy or offline. "
+              "Please try again.*");
         } else if (error_msg.find("HTTP status 401") != std::string::npos) {
-          display_err +=
+          display_err += _(
             "\n\n*Troubleshooting Tip: Unauthorized. Please check if your API Key is entered correctly "
-            "in Preferences -> AI tab.*";
+            "in Preferences -> AI tab.*");
         } else if (error_msg.find("HTTP status 404") != std::string::npos) {
           display_err +=
-            "\n\n*Troubleshooting Tip: Not Found. Please check if the endpoint URL and model name are "
-            "configured correctly in Preferences.*";
+            _("\n\n*Troubleshooting Tip: Not Found. Please check if the endpoint URL and model name are "
+              "configured correctly in Preferences.*");
         }
         if (activeResponseText && activeResponseText->empty()) {
           activeAIBubble->updateText(QString::fromStdString(display_err));
@@ -670,23 +670,23 @@ void ChatWidget::logToolExecution(const std::string& name, const std::string& re
   QString detail;
 
   if (name == "get_editor_code") {
-    summary = tr("Inspected current code");
-    detail = tr("Tool: get_editor_code\nResult: Read %1 lines.")
+    summary = q_("Inspected current code");
+    detail = q_("Tool: get_editor_code\nResult: Read %1 lines.")
                .arg(QString::fromStdString(result).count('\n'));
   } else if (name == "set_editor_code") {
-    summary = tr("Applied code changes");
-    detail = tr("Tool: set_editor_code\nResult: Applied code changes to the active editor.");
+    summary = q_("Applied code changes");
+    detail = q_("Tool: set_editor_code\nResult: Applied code changes to the active editor.");
   } else if (name == "trigger_preview") {
-    summary = tr("Triggered render preview");
+    summary = q_("Triggered render preview");
     detail = QString::fromStdString("Tool: trigger_preview\nResult: " + result);
   } else if (name == "get_viewport") {
-    summary = tr("Inspected 3D Viewport");
+    summary = q_("Inspected 3D Viewport");
     detail = QString::fromStdString("Tool: get_viewport\nResult: " + result);
   } else if (name == "set_camera") {
-    summary = tr("Adjusted Camera View");
+    summary = q_("Adjusted Camera View");
     detail = QString::fromStdString("Tool: set_camera\nResult: " + result);
   } else {
-    summary = tr("Executed tool: %1").arg(QString::fromStdString(name));
+    summary = q_("Executed tool: %1").arg(QString::fromStdString(name));
     detail = QString::fromStdString("Tool: " + name + "\nResult: " + result);
   }
 
@@ -962,7 +962,7 @@ void ChatWidget::importChat()
   try {
     file >> j;
   } catch (const std::exception& e) {
-    QMessageBox::warning(this, _("Import Warning"), tr("Failed to parse JSON file: %1").arg(e.what()));
+    QMessageBox::warning(this, _("Import Warning"), q_("Failed to parse JSON file: %1").arg(e.what()));
     return;
   }
 
@@ -1011,7 +1011,7 @@ void ChatWidget::importChat()
   if (skipped_count > 0) {
     QMessageBox::warning(
       this, _("Import Warning"),
-      tr("Imported chat history with warnings: %1 invalid entries were skipped.").arg(skipped_count));
+      q_("Imported chat history with warnings: %1 invalid entries were skipped.").arg(skipped_count));
   } else {
     QMessageBox::information(this, _("Import Successful"), _("Chat history imported successfully."));
   }
@@ -1101,23 +1101,23 @@ void ChatWidget::rebuildChatUI()
               QString summary;
               QString detail;
               if (name == "get_editor_code") {
-                summary = tr("Inspected current code");
-                detail = tr("Tool: get_editor_code\nResult: Read %1 lines.")
+                summary = q_("Inspected current code");
+                detail = q_("Tool: get_editor_code\nResult: Read %1 lines.")
                            .arg(QString::fromStdString(result).count('\n'));
               } else if (name == "set_editor_code") {
-                summary = tr("Applied code changes");
-                detail = tr("Tool: set_editor_code\nResult: Applied code changes to the active editor.");
+                summary = q_("Applied code changes");
+                detail = q_("Tool: set_editor_code\nResult: Applied code changes to the active editor.");
               } else if (name == "trigger_preview") {
-                summary = tr("Triggered render preview");
+                summary = q_("Triggered render preview");
                 detail = QString::fromStdString("Tool: trigger_preview\nResult: " + result);
               } else if (name == "get_viewport") {
-                summary = tr("Inspected 3D Viewport");
+                summary = q_("Inspected 3D Viewport");
                 detail = QString::fromStdString("Tool: get_viewport\nResult: " + result);
               } else if (name == "set_camera") {
-                summary = tr("Adjusted Camera View");
+                summary = q_("Adjusted Camera View");
                 detail = QString::fromStdString("Tool: set_camera\nResult: " + result);
               } else {
-                summary = tr("Executed tool: %1").arg(QString::fromStdString(name));
+                summary = q_("Executed tool: %1").arg(QString::fromStdString(name));
                 detail = QString::fromStdString("Tool: " + name + "\nResult: " + result);
               }
 

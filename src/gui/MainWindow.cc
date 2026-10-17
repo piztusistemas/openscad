@@ -1345,14 +1345,14 @@ void MainWindow::on_fileActionPythonRevoke_triggered()
   this->trusted_edit_document_name = "";
 #endif
   settings.remove("python_hash");
-  QMessageBox::information(this, _("Trusted Files"), "All trusted python files revoked",
+  QMessageBox::information(this, _("Trusted Files"), _("All trusted python files revoked"),
                            QMessageBox::Ok);
 }
 
 void MainWindow::on_fileActionPythonCreateVenv_triggered()
 {
 #ifdef ENABLE_PYTHON
-  const QString selectedDir = QFileDialog::getExistingDirectory(this, "Create Virtual Environment");
+  const QString selectedDir = QFileDialog::getExistingDirectory(this, _("Create Virtual Environment"));
   if (selectedDir.isEmpty()) {
     return;
   }
@@ -1361,14 +1361,15 @@ void MainWindow::on_fileActionPythonCreateVenv_triggered()
   if (!venvDir.exists()) {
     // Should not happen, but just in case double check...
     QMessageBox::critical(this, _("Create Virtual Environment"),
-                          "Directory does not exist. Can't create virtual environment.",
+                          _("Directory does not exist. Can't create virtual environment."),
                           QMessageBox::Ok);
     return;
   }
 
   if (!venvDir.isEmpty()) {
     QMessageBox::critical(this, _("Create Virtual Environment"),
-                          "Directory is not empty. Can't create virtual environment.", QMessageBox::Ok);
+                          _("Directory is not empty. Can't create virtual environment."),
+                          QMessageBox::Ok);
     return;
   }
 
@@ -1381,12 +1382,12 @@ void MainWindow::on_fileActionPythonCreateVenv_triggered()
     Settings::Settings::visit(SettingsWriter());
     LOG(_("Python virtual environment creation successfull."));
     QMessageBox::information(this, _("Create Virtual Environment"),
-                             "Virtual environment created, please restart OpenSCAD to activate.",
+                             _("Virtual environment created, please restart OpenSCAD to activate."),
                              QMessageBox::Ok);
   } else {
     LOG(_("Python virtual environment creation failed."));
-    QMessageBox::critical(this, _("Create Virtual Environment"), "Virtual environment creation failed.",
-                          QMessageBox::Ok);
+    QMessageBox::critical(this, _("Create Virtual Environment"),
+                          _("Virtual environment creation failed."), QMessageBox::Ok);
   }
 #endif  // ifdef ENABLE_PYTHON
 }
@@ -1394,7 +1395,7 @@ void MainWindow::on_fileActionPythonCreateVenv_triggered()
 void MainWindow::on_fileActionPythonSelectVenv_triggered()
 {
 #ifdef ENABLE_PYTHON
-  const QString venvDir = QFileDialog::getExistingDirectory(this, "Select Virtual Environment");
+  const QString venvDir = QFileDialog::getExistingDirectory(this, _("Select Virtual Environment"));
   if (venvDir.isEmpty()) {
     return;
   }
@@ -1403,7 +1404,7 @@ void MainWindow::on_fileActionPythonSelectVenv_triggered()
     Settings::SettingsPython::pythonVirtualEnv.setValue(venvDir.toStdString());
     Settings::Settings::visit(SettingsWriter());
     QMessageBox::information(this, _("Select Virtual Environment"),
-                             "Virtual environment selected, please restart OpenSCAD to activate.",
+                             _("Virtual environment selected, please restart OpenSCAD to activate."),
                              QMessageBox::Ok);
   }
 #endif  // ifdef ENABLE_PYTHON
@@ -1728,7 +1729,7 @@ bool MainWindow::trust_python_file(const std::string& file, const std::string& c
     return true;
   }
 
-  auto ret = QMessageBox::warning(this, "Application",
+  auto ret = QMessageBox::warning(this, _("Application"),
                                   _("Python files can potentially contain harmful stuff.\n"
                                     "Do you trust this file ?\n"),
                                   QMessageBox::Yes | QMessageBox::YesAll | QMessageBox::No);
@@ -1899,7 +1900,7 @@ void MainWindow::actionRenderPreview()
   GuiLocker::lock();
   preview_requested = false;
 
-  resetMeasurementsState(false, "Render (not preview) to enable measurements");
+  resetMeasurementsState(false, _("Render (not preview) to enable measurements"));
 
   prepareCompile("csgRender", !animateDock->isVisible(), true);
   compile(false, false);
@@ -2066,9 +2067,9 @@ void MainWindow::actionRenderDone(const std::shared_ptr<const Geometry>& root_ge
 
     // Go to CGAL view mode
     viewModeRender();
-    resetMeasurementsState(true, "Click to start measuring");
+    resetMeasurementsState(true, _("Click to start measuring"));
   } else {
-    resetMeasurementsState(false, "No top level geometry; render something to enable measurements");
+    resetMeasurementsState(false, _("No top level geometry; render something to enable measurements"));
     LOG(message_group::UI_Warning, _("No top level geometry to render"));
   }
 
@@ -2091,12 +2092,12 @@ void MainWindow::handleMeasurementClicked(QAction *clickedAction)
 {
   // If we're unchecking, just stop.
   if (activeMeasurement == clickedAction) {
-    resetMeasurementsState(true, "Click to start measuring");
+    resetMeasurementsState(true, _("Click to start measuring"));
     return;
   }
 
-  resetMeasurementsState(true, "Click to start measuring");
-  clickedAction->setToolTip("Click to cancel measurement");
+  resetMeasurementsState(true, _("Click to start measuring"));
+  clickedAction->setToolTip(_("Click to cancel measurement"));
   clickedAction->setChecked(true);
   activeMeasurement = clickedAction;
 
@@ -2132,9 +2133,9 @@ void MainWindow::leftClick(QPoint mouse)
               [clipboard]() { QApplication::clipboard()->setText(clipboard); });
       first = false;
     }
-    resultmenu.addAction("Click any above to copy its data to the clipboard");
+    resultmenu.addAction(_("Click any above to copy its data to the clipboard"));
     resultmenu.exec(qglview->mapToGlobal(mouse));
-    resetMeasurementsState(true, "Click to start measuring");
+    resetMeasurementsState(true, _("Click to start measuring"));
   }
 }
 
@@ -2182,7 +2183,7 @@ void MainWindow::rightClick(QPoint position)
           name = vname.empty() ? "?" : vname.substr(first_position);
         }
         ss.str("");
-        ss << name << " (no source reference)";
+        ss << name << " " << _("(no source reference)");
         tracemenu.addAction(QString::fromStdString(ss.str()));
         continue;
       }
@@ -2247,7 +2248,7 @@ void MainWindow::rightClick(QPoint position)
 void MainWindow::measureFinished()
 {
   auto didSomething = meas.stopMeasure();
-  if (didSomething) resetMeasurementsState(true, "Click to start measuring");
+  if (didSomething) resetMeasurementsState(true, _("Click to start measuring"));
 }
 
 void MainWindow::clearAllSelectionIndicators()
@@ -2431,8 +2432,9 @@ void MainWindow::showTextInWindow(const QString& type, const QString& content)
   e->setAttribute(Qt::WA_DeleteOnClose);
   e->setWindowFlags(Qt::Window);
   e->setTabStopDistance(tabStopWidth);
-  e->setWindowTitle(type + " Dump");
-  if (content.isEmpty()) e->setPlainText("No " + type + " to dump. Please try compiling first...");
+  e->setWindowTitle(QString(_("%1 Dump")).arg(type));
+  if (content.isEmpty())
+    e->setPlainText(QString(_("No %1 to dump. Please try compiling first...")).arg(type));
   else e->setPlainText(content);
 
   e->setReadOnly(true);
@@ -2510,9 +2512,9 @@ bool MainWindow::canExport(unsigned int dim)
 
   // editor has changed since last render
   if (!activeEditor->contentsRendered) {
-    auto ret = QMessageBox::warning(this, "Application",
-                                    "The current tab has been modified since its last render (F6).\n"
-                                    "Do you really want to export the previous content?",
+    auto ret = QMessageBox::warning(this, _("Application"),
+                                    _("The current tab has been modified since its last render (F6).\n"
+                                      "Do you really want to export the previous content?"),
                                     QMessageBox::Yes | QMessageBox::No);
     if (ret != QMessageBox::Yes) {
       return false;
@@ -2521,9 +2523,9 @@ bool MainWindow::canExport(unsigned int dim)
 
   // other tab contents most recently rendered
   if (renderedEditor != activeEditor) {
-    auto ret = QMessageBox::warning(this, "Application",
-                                    "The rendered data is of different tab.\n"
-                                    "Do you really want to export the another tab's content?",
+    auto ret = QMessageBox::warning(this, _("Application"),
+                                    _("The rendered data is of different tab.\n"
+                                      "Do you really want to export the another tab's content?"),
                                     QMessageBox::Yes | QMessageBox::No);
     if (ret != QMessageBox::Yes) {
       return false;
@@ -3481,7 +3483,7 @@ void MainWindow::resetMeasurementsState(bool enable, const QString& tooltipMessa
   if (RenderSettings::inst()->backend3D != RenderBackend3D::ManifoldBackend) {
     enable = false;
     static const auto noCGALMessage =
-      "Measurements only work with Manifold backend; Preferences->Advanced->3D Rendering->Backend";
+      _("Measurements only work with Manifold backend; Preferences->Advanced->3D Rendering->Backend");
     this->designActionMeasureDist->setToolTip(noCGALMessage);
     this->designActionMeasureAngle->setToolTip(noCGALMessage);
   } else {
@@ -3759,7 +3761,7 @@ void MainWindow::setup3DView()
   this->qglview->setMouseCentricZoom(Settings::Settings::mouseCentricZoom.value());
   this->setAllMouseViewActions();
   this->meas.setView(qglview);
-  resetMeasurementsState(false, "Render (not preview) to enable measurements");
+  resetMeasurementsState(false, _("Render (not preview) to enable measurements"));
 
   // Initial Color Scheme
   const QString cs = GlobalPreferences::inst()->getValue("3dview/colorscheme").toString();

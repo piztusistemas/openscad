@@ -9,12 +9,27 @@
 #include <QListWidget>
 #include <QRadioButton>
 #include <QSettings>
+#include <QRegularExpression>
 #include <QSpinBox>
 #include <QString>
 #include <string>
 
 #include "core/Settings.h"
 #include "gui/SettingsWriter.h"
+#include "utils/printutils.h"
+
+QString InitConfigurator::translatedDescription(const std::string& description)
+{
+  if (description.empty()) return {};  // _("") would return the catalog header
+  // Axis items are formatted with the axis number, see axisValues() in Settings.cc
+  static const QRegularExpression axisRegex("^Axis (\\d+)( \\(inverted\\))?$");
+  const auto match = axisRegex.match(QString::fromStdString(description));
+  if (match.hasMatch()) {
+    const auto format = match.capturedLength(2) > 0 ? _("Axis %d (inverted)") : _("Axis %d");
+    return QString::fromUtf8(format).replace("%d", match.captured(1));
+  }
+  return QString::fromUtf8(_(description.c_str()));
+}
 
 void InitConfigurator::writeSettings()
 {

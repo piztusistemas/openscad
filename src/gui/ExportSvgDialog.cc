@@ -4,6 +4,8 @@
 #include <QPalette>
 #include <QPushButton>
 
+#include "gui/qtgettext.h"
+
 ExportSvgDialog::ExportSvgDialog()
 {
   setupUi(this);
@@ -59,7 +61,7 @@ ExportSvgOptions ExportSvgDialog::getOptions() const
 
 void ExportSvgDialog::on_toolButtonFillColor_clicked()
 {
-  QColor color = QColorDialog::getColor(fillColor, this, tr("Select Fill Color"));
+  QColor color = QColorDialog::getColor(fillColor, this, q_("Select Fill Color"));
   if (color.isValid()) {
     updateFillColor(color);
   }
@@ -77,7 +79,7 @@ void ExportSvgDialog::on_checkBoxEnableFill_toggled(bool checked)
 
 void ExportSvgDialog::on_toolButtonStrokeColor_clicked()
 {
-  QColor color = QColorDialog::getColor(strokeColor, this, tr("Select Stroke Color"));
+  QColor color = QColorDialog::getColor(strokeColor, this, q_("Select Stroke Color"));
   if (color.isValid()) {
     updateStrokeColor(color);
   }

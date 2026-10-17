@@ -167,7 +167,7 @@ void FontList::updateFilter(int searchTypeIdx, const QString& text)
   case 1:  proxy->setFilterWildcard(text); break;
   default: proxy->setFilterRegularExpression(regExp); break;
   }
-  groupBoxFilter->setTitle(QString("Filter (%1 fonts found)").arg(proxy->rowCount()));
+  groupBoxFilter->setTitle(QString(_("Filter (%1 fonts found)")).arg(proxy->rowCount()));
 }
 
 void FontList::on_comboBoxCharFilterType_currentIndexChanged(int idx)
@@ -197,7 +197,7 @@ void FontList::updateCharFilter(int charFilterType, const QString& text)
     }
   }
   proxy->invalidate();
-  groupBoxFilter->setTitle(QString("Filter (%1 fonts found)").arg(proxy->rowCount()));
+  groupBoxFilter->setTitle(QString(_("Filter (%1 fonts found)")).arg(proxy->rowCount()));
 }
 
 void FontList::on_actionResetSampleText_triggered()
@@ -445,7 +445,7 @@ void FontList::update_font_list()
   proxy = new FontSortFilterProxyModel(this);
   proxy->setSourceModel(model);
   proxy->setFilterCaseSensitivity(Qt::CaseInsensitive);
-  groupBoxFilter->setTitle(QString("Filter (%1 fonts found)").arg(proxy->rowCount()));
+  groupBoxFilter->setTitle(QString(_("Filter (%1 fonts found)")).arg(proxy->rowCount()));
 
   this->tableView->setModel(proxy);
   on_actionResetColumns_triggered();

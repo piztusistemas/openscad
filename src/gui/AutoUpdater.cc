@@ -1,5 +1,7 @@
 #include "gui/AutoUpdater.h"
 
+#include "utils/printutils.h"
+
 #include <QAction>
 #include <QMenuBar>
 
@@ -11,7 +13,7 @@ void AutoUpdater::init()
   if (!this->updateAction) {
     auto mb = new QMenuBar();
     this->updateMenu = mb->addMenu("special");
-    this->updateAction = new QAction("Check for Update...", this);
+    this->updateAction = new QAction(_("Check for Update..."), this);
     // Add to application menu
     this->updateAction->setMenuRole(QAction::ApplicationSpecificRole);
     this->updateAction->setEnabled(true);

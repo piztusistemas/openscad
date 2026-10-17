@@ -27,6 +27,7 @@
 #include "geometry/linalg.h"
 #include "core/Selection.h"
 #include "gui/Measurement.h"
+#include "utils/printutils.h"
 #include "utils/vector_math.h"
 
 #include <cassert>
@@ -146,7 +147,7 @@ Result Template<TView>::statemachine(QPoint mouse)
       }
 
       if (std::isnan(res.distance)) {
-        ret.addText("Got Not-a-Number when calculating distance; sorry");
+        ret.addText(_("Got Not-a-Number when calculating distance; sorry"));
         ret.status = Result::Status::Error;
         return ret;
       }
@@ -210,13 +211,13 @@ Result Template<TView>::statemachine(QPoint mouse)
         Vector3d side2 = (obj2.p1 - obj3.p1).normalized();
         ang = acos(side1.dot(side2)) * 180.0 / 3.14159265359;
       } else {
-        ret.addText("If selecting three things, they must all be points");
+        ret.addText(_("If selecting three things, they must all be points"));
         ret.status = Result::Status::Error;
         return ret;
       }
     display_angle:
       if (std::isnan(ang)) {
-        ret.addText("Got Not-a-Number when calculating angle; sorry");
+        ret.addText(_("Got Not-a-Number when calculating angle; sorry"));
         ret.status = Result::Status::Error;
         return ret;
       }

@@ -12,6 +12,8 @@
 #include <vector>
 #include <algorithm>
 
+#include "gui/qtgettext.h"
+
 class DiffDialog : public QDialog
 {
   Q_OBJECT
@@ -20,7 +22,7 @@ public:
              QWidget *parent = nullptr)
     : QDialog(parent)
   {
-    setWindowTitle(tr("Review Code Changes"));
+    setWindowTitle(q_("Review Code Changes"));
     resize(800, 600);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
@@ -28,7 +30,7 @@ public:
     layout->setSpacing(8);
 
     QLabel *descLabel =
-      new QLabel(tr("The AI assistant has proposed the following changes. Deletions are shown on the "
+      new QLabel(q_("The AI assistant has proposed the following changes. Deletions are shown on the "
                     "left (red), and additions on the right (green)."),
                  this);
     descLabel->setWordWrap(true);
@@ -45,19 +47,19 @@ public:
     browser->setHtml(QString::fromStdString(html));
 
     // Checkbox for preview
-    previewCheckbox = new QCheckBox(tr("Trigger preview after applying"), this);
+    previewCheckbox = new QCheckBox(q_("Trigger preview after applying"), this);
     previewCheckbox->setChecked(true);
 
     // Button box
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
 
-    QPushButton *applyBtn = new QPushButton(tr("Apply Changes"), buttonBox);
+    QPushButton *applyBtn = new QPushButton(q_("Apply Changes"), buttonBox);
     applyBtn->setStyleSheet(
       "background-color: #2563eb; color: white; font-weight: bold; border-radius: 4px; padding: 6px "
       "12px;");
     buttonBox->addButton(applyBtn, QDialogButtonBox::AcceptRole);
 
-    QPushButton *discardBtn = new QPushButton(tr("Discard Changes"), buttonBox);
+    QPushButton *discardBtn = new QPushButton(q_("Discard Changes"), buttonBox);
     discardBtn->setStyleSheet(
       "background-color: #ef4444; color: white; font-weight: bold; border-radius: 4px; padding: 6px "
       "12px;");

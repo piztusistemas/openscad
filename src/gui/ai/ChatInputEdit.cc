@@ -1,9 +1,11 @@
 #include "gui/ai/ChatInputEdit.h"
 #include <QKeyEvent>
 
+#include "gui/qtgettext.h"
+
 ChatInputEdit::ChatInputEdit(QWidget *parent) : QPlainTextEdit(parent)
 {
-  setPlaceholderText(tr("Ask AI..."));
+  setPlaceholderText(q_("Ask AI..."));
   setFixedHeight(50);
 }
 
